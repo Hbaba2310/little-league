@@ -1,4 +1,16 @@
-<!-- ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Add these to the <head> of your HTML file -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+</head>
+<body>
+  <!-- ============================================ -->
 <!--                 Why Choose Us                -->
 <!-- ============================================ -->
 
@@ -79,7 +91,46 @@
           </p>
         </li>
       </ul>
-      <a class="cs-button-solid" href="contact.html">Book a Tee Time</a>
     </div>
   </div>
 </section>
+
+<!-- Button to book a tee time -->
+<a class="cs-button-solid" href="#" onclick="openCalendar()">Book a Tee Time</a>
+
+<!-- Calendar Input Field -->
+<div id="calendarContainer" style="display: none;">
+  <input id="teeTimeCalendar" type="text" placeholder="Select a date and time" />
+  <button onclick="submitBooking()">Submit</button>
+</div>
+
+<script>
+  // Initialize Flatpickr for the date and time picker
+  flatpickr("#teeTimeCalendar", {
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+    minDate: "today", // Disable past dates
+  });
+
+  // Show the calendar when the user clicks the button
+  function openCalendar() {
+    document.getElementById('calendarContainer').style.display = 'block';
+  }
+
+  // Handle form submission (for demonstration purposes, logs the date selected)
+  function submitBooking() {
+    const selectedDate = document.getElementById('teeTimeCalendar').value;
+    if (selectedDate) {
+      alert('Tee time booked for ' + selectedDate);
+      // Add logic here to handle the booking, e.g., send it to your server
+    } else {
+      alert('Please select a date and time.');
+    }
+  }
+</script>
+
+  
+</body>
+</html>
+
+
